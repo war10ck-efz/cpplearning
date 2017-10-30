@@ -4,7 +4,7 @@
 using namespace std;
 
 template <class T>
-void swap_move(T& a, T& b)
+inline void swap_move(T& a, T& b)
 {
 	T tmp(std::move(a));
 	a = std::move(b);
@@ -13,7 +13,7 @@ void swap_move(T& a, T& b)
 
 
 template <class T>
-void swap_copy(T& a, T& b)
+inline void swap_copy(T& a, T& b)
 {
 	T tmp(a);
 	a = b;
@@ -24,7 +24,7 @@ int main()
 {
 	int a = 1, b = 2;
 	int start = clock();
-	for (int i = 0; i < 1000000; ++i)	swap_move(a, b);
+	for (int i = 0; i < 1000000; ++i)	std::swap(a, b);
 	int end = clock();
 	cout << "swap_move spent :" << end - start << "ms" << endl;
 
